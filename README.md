@@ -21,26 +21,9 @@
 -   **Charts**: [TradingView Lightweight Charts](https://www.tradingview.com/)
 -   **Icons**: [Lucide React](https://lucide.dev/)
 
-## 📂 Project Structure
-
--   `src/app/`: Next.js App Router pages and layouts.
--   `src/ai/`: Genkit AI flow definitions and configurations.
--   `src/components/`: Reusable UI components (Dashboard, Layout, UI).
--   `src/hooks/`: Custom React hooks for responsive design and state management.
--   `src/lib/`: Utility functions and static asset references.
-
-## 🚦 Getting Started
-
-1.  **Environment Setup**: Ensure your `.env` contains the necessary `GEMINI_API_KEY` for AI features.
-2.  **Development**:
-    ```bash
-    npm run dev
-    ```
-3.  **Genkit Debugging**:
-    ```bash
-    npm run genkit:dev
-    ```
 
 ## 📄 License
 
 Internal prototype for CryptoLens Research Hub. All rights reserved.
+
+Built by Valentina Kiyungi.
