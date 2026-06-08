@@ -1,3 +1,28 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "academy-intro",
+      "description": "Introduction to Blockchain",
+      "imageUrl": "https://picsum.photos/seed/101/600/400",
+      "imageHint": "blockchain crypto"
+    },
+    {
+      "id": "academy-defi",
+      "description": "DeFi Mastery",
+      "imageUrl": "https://picsum.photos/seed/102/600/400",
+      "imageHint": "finance technology"
+    },
+    {
+      "id": "academy-security",
+      "description": "Wallet Security",
+      "imageUrl": "https://picsum.photos/seed/103/600/400",
+      "imageHint": "digital security"
+    },
+    {
+      "id": "academy-trading",
+      "description": "Technical Analysis",
+      "imageUrl": "https://picsum.photos/seed/104/600/400",
+      "imageHint": "trading chart"
+    }
+  ]
 }
