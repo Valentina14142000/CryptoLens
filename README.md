@@ -2,7 +2,7 @@
 
 **CryptoLens** is a professional-grade cryptocurrency research and analytics platform. It leverages advanced AI models and real-time on-chain data to provide institutional-quality insights for retail and professional traders alike.
 
-## 🚀 Key Features
+##  Key Features
 
 -   **Intelligent Token Research**: Deep-dive analysis of cryptocurrency fundamentals, whitepapers, and technical utility powered by Google's Gemini models via Genkit.
 -   **Market Terminal**: Real-time advanced charting system integrated with TradingView for technical analysis.
@@ -11,7 +11,7 @@
 -   **CryptoLens Academy**: A curated micro-learning environment to master blockchain foundations and advanced DeFi strategies.
 -   **Institutional Flow Tracking**: Monitor ETF net inflows, spot delta, and open interest in real-time.
 
-## 🛠️ Technology Stack
+##  Technology Stack
 
 -   **Framework**: [Next.js 15+](https://nextjs.org/) (App Router)
 -   **Language**: [TypeScript](https://www.typescriptlang.org/)
