@@ -37,7 +37,7 @@
 ### 1. Clone the Repository
 
 ```bash
-git clone [https://github.com/Valentina14142000/crypto-lens.git](https://github.com/Valentina14142000/crypto-lens.git)
+git clone GitHub repo
 cd crypto-lens
 ```
 
