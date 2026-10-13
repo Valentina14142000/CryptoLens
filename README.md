@@ -1,77 +1,71 @@
-# 🔍 CryptoLens | AI-Powered Crypto Research Hub
+<div align="center">
 
-[![Next.js](https://img.shields.io/badge/Next.js-15%2B-black?style=flat&logo=next.js&logoColor=white)](https://nextjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.0%2B-blue?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Genkit](https://img.shields.io/badge/Firebase-Genkit_%2B_Gemini-FFCA28?style=flat&logo=firebase&logoColor=black)](https://firebase.google.com/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.0%2B-38BDF8?style=flat&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
-[![License: Proprietary](https://img.shields.io/badge/License-Proprietary-red.svg)](https://opensource.org/)
+# 🔍 CryptoLens
 
-**CryptoLens** is a professional-grade cryptocurrency research and analytics platform. It leverages advanced AI models and real-time data to provide institutional-quality insights for retail and professional traders alike.
+**Live crypto market terminal with AI-assisted token research**
 
----
+[![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Tailwind](https://img.shields.io/badge/Tailwind-3-38BDF8?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![Gemini](https://img.shields.io/badge/Google_Gemini-AI-4285F4?style=for-the-badge&logo=google&logoColor=white)](https://ai.google.dev/)
 
-## ✨ Key Features
+</div>
 
-* **Intelligent Token Research:** Deep-dive analysis of cryptocurrency fundamentals, whitepapers, and technical utility powered by Google's Gemini models via Firebase Genkit.
-* **Market Terminal:** Real-time advanced charting system integrated with TradingView for precision technical analysis.
-* **Whale Analytics:** Live monitoring of significant institutional and high-net-worth wallet movements across multiple blockchains.
-* **Sentiment Pulse:** Aggregate market psychology monitoring, tracking social signals and global crypto news flow.
-* **CryptoLens Academy:** A curated micro-learning environment to master blockchain foundations and advanced DeFi strategies.
-* **Institutional Flow Tracking:** Monitor ETF net inflows, spot delta, and open interest in real time.
+> **Research tool only. Not financial advice.** Crypto assets are volatile and you can lose everything you invest. AI-written text can be wrong or out of date.
 
----
+## What is real
 
-## 🛠️ Tech Stack
+Everything on screen comes from a live source or from your own input. Nothing is mocked.
 
-* **Framework:** Next.js 15+ (App Router)
-* **Language:** TypeScript
-* **AI Engine:** Firebase Genkit with Google Gemini 2.5 Flash
-* **UI Components:** Shadcn UI & Lucide React Icons
-* **Styling:** Tailwind CSS
-* **Charts:** TradingView Lightweight Charts
+| Feature | Data source |
+|---|---|
+| Price ticker, global market cap, dominance, trending coins | [CoinGecko](https://www.coingecko.com/en/api) public API |
+| Fear & Greed gauge and 30-day history | [alternative.me](https://alternative.me/crypto/fear-and-greed-index/) |
+| Large Bitcoin transactions (unconfirmed) | [blockchain.info](https://www.blockchain.com/explorer/api) |
+| Mempool size and recommended fees | [mempool.space](https://mempool.space/docs/api) |
+| Headlines | [CryptoCompare](https://min-api.cryptocompare.com/) news API |
+| Charts | TradingView embedded widget (BTC, ETH, SOL, BNB, XRP, plus its own symbol search) |
+| AI token report | Gemini, grounded on the live CoinGecko facts for the token you search |
+| Portfolio and Academy progress | Saved only in your browser (`localStorage`) |
 
----
+**Limits worth knowing:** the whale feed shows the sum of a transaction's outputs, which can include change returning to the sender, and wallet owners are not identified. Free public APIs are rate limited, so each endpoint caches results and serves the last good data if a source is down. The AI report is instructed not to give price predictions or buy/sell advice.
 
-## 🚀 Quick Start
-
-### 1. Clone the Repository
+## Run locally
 
 ```bash
-git clone GitHub repo
-cd crypto-lens
-```
-
-### 2. Install Dependencies
-
-```Bash
+git clone https://github.com/Valentina14142000/CryptoLens.git
+cd CryptoLens
 npm install
-# or
-yarn install
-# or
-pnpm install
+cp .env.example .env.local      # then set GEMINI_API_KEY (free: https://aistudio.google.com/apikey)
+npm run dev                     # http://localhost:3000
 ```
 
-### 3. Configure Environment Variables
+| Variable | Required | Purpose |
+|---|---|---|
+| `GEMINI_API_KEY` | For AI Analysis | Server-side only, never sent to the browser |
+| `COINGECKO_API_KEY` | No | Free demo key for higher CoinGecko rate limits |
+| `GEMINI_MODEL` | No | Override the default model (falls back automatically if one is retired) |
 
-Create a .env.local file in the root directory and add your API credentials:
+Scripts: `npm run dev`, `npm run build`, `npm run typecheck`.
 
-```Code snippet
-GEMINI_API_KEY=your_gemini_api_key_here
-NEXT_PUBLIC_APP_URL=http://localhost:3000
+## Deploy on Vercel (free)
+
+1. Import this repository at [vercel.com/new](https://vercel.com/new). The Next.js preset is detected automatically.
+2. Add the environment variable `GEMINI_API_KEY` (mark it Sensitive).
+3. Deploy. If the link asks visitors to sign in, turn off **Settings → Deployment Protection → Vercel Authentication**.
+
+## Architecture
+
+```
+src/app/api/market    prices, global stats, Fear & Greed, trending
+src/app/api/whales    large unconfirmed BTC transactions, mempool, fees
+src/app/api/news      headlines
+src/app/api/analyze   token lookup + Gemini report (key stays on the server)
+src/lib/data.ts       fetchers, parsers, in-memory cache with stale-on-error
+src/lib/gemini.ts     Gemini REST client with retry and model fallback
+src/components        dashboard widgets, layout, shadcn/ui primitives
 ```
 
-### 4. Run Development Server
+## License
 
-```Bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
-
-Open http://localhost:3000 in your browser to explore the CryptoLens research terminal.
-
-## 📄 License
-
-Internal prototype for CryptoLens Research Hub. All rights reserved.
+MIT

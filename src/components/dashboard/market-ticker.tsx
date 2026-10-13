@@ -1,36 +1,40 @@
-
 "use client";
 
 import * as React from "react";
 import { TrendingUp, TrendingDown } from "lucide-react";
 import { cn } from "@/lib/utils";
-
-const tickers = [
-  { symbol: "BTC", price: "64,241.20", change: "+1.2%", positive: true },
-  { symbol: "ETH", price: "3,412.15", change: "-0.4%", positive: false },
-  { symbol: "SOL", price: "142.80", change: "+5.1%", positive: true },
-  { symbol: "BNB", price: "582.40", change: "+0.8%", positive: true },
-  { symbol: "ARB", price: "1.12", change: "-2.3%", positive: false },
-  { symbol: "TIA", price: "9.45", change: "+4.2%", positive: true },
-];
+import { useLive } from "@/hooks/use-live";
+import { usd, pct } from "@/lib/format";
+import type { MarketData } from "@/lib/types";
 
 export function MarketTicker() {
+  const { data, error, loading } = useLive<MarketData>("/api/market", 60_000);
+  const coins = (data?.coins ?? []).slice(0, 10);
+
+  if (!coins.length) {
+    return (
+      <div className="w-full bg-muted/30 border-y border-border py-2 mb-6 px-4 text-xs text-muted-foreground">
+        {loading ? "Loading live prices..." : `Live prices unavailable${error ? ` (${error})` : ""}. Retrying automatically.`}
+      </div>
+    );
+  }
+
   return (
     <div className="w-full overflow-hidden bg-muted/30 border-y border-border py-2 mb-6">
       <div className="flex gap-8 animate-marquee whitespace-nowrap px-4">
-        {[...tickers, ...tickers].map((ticker, idx) => (
-          <div key={`${ticker.symbol}-${idx}`} className="flex items-center gap-2">
-            <span className="font-code font-bold text-sm text-foreground">{ticker.symbol}</span>
-            <span className="text-sm font-medium text-muted-foreground">${ticker.price}</span>
-            <span className={cn(
-              "text-xs font-bold flex items-center gap-0.5",
-              ticker.positive ? "text-accent" : "text-destructive"
-            )}>
-              {ticker.positive ? <TrendingUp className="w-3 h-3" /> : <TrendingDown className="w-3 h-3" />}
-              {ticker.change}
-            </span>
-          </div>
-        ))}
+        {[...coins, ...coins].map((c, idx) => {
+          const up = (c.change24h ?? 0) >= 0;
+          return (
+            <div key={`${c.id}-${idx}`} className="flex items-center gap-2">
+              <span className="font-code font-bold text-sm text-foreground">{c.symbol}</span>
+              <span className="text-sm font-medium text-muted-foreground">{usd(c.price)}</span>
+              <span className={cn("text-xs font-bold flex items-center gap-0.5", up ? "text-accent" : "text-destructive")}>
+                {up ? <TrendingUp className="w-3 h-3" /> : <TrendingDown className="w-3 h-3" />}
+                {pct(c.change24h)}
+              </span>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
