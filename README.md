@@ -9,7 +9,7 @@ Real-time prices · Bitcoin whale tracking · Fear & Greed sentiment · AI resea
 
 <br />
 
-[![Live Demo](https://img.shields.io/badge/▶_Live_Demo-4785FF?style=for-the-badge)](https://PASTE-YOUR-VERCEL-URL)
+[![Live Demo](https://img.shields.io/badge/▶_Live_Demo-4785FF?style=for-the-badge)](https://crypto-lens-zeta.vercel.app/)
 [![Next.js](https://img.shields.io/badge/Next.js-15-000000?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
@@ -162,7 +162,7 @@ All endpoints return JSON and are cached at the edge for a short time.
 | `POST` | `/api/analyze` | Verified token facts and an AI report |
 
 ```bash
-curl -s -X POST https://PASTE-YOUR-VERCEL-URL/api/analyze \
+curl -s -X POST https://crypto-lens-zeta.vercel.app//api/analyze \
   -H "content-type: application/json" \
   -d '{"token":"solana"}'
 ```
