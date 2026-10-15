@@ -31,7 +31,7 @@ export default function Dashboard() {
     <AppShell>
       <div className="max-w-7xl mx-auto space-y-6">
         <div>
-          <h1 className="text-3xl font-headline font-bold text-foreground">Market Terminal</h1>
+          <h1 className="text-2xl sm:text-3xl font-headline font-bold text-foreground">Market Terminal</h1>
           <p className="text-muted-foreground mt-1">Live prices, charts, large Bitcoin transactions and market sentiment.</p>
         </div>
 
@@ -40,7 +40,7 @@ export default function Dashboard() {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
           <div className="lg:col-span-3 space-y-6">
             <Card className="border-border bg-card shadow-2xl overflow-hidden">
-              <CardHeader className="border-b border-border bg-muted/20 px-6 py-4 flex flex-row items-center justify-between flex-wrap gap-2">
+              <CardHeader className="border-b border-border bg-muted/20 px-4 py-3 sm:px-6 sm:py-4 flex flex-row items-center justify-between flex-wrap gap-2">
                 <CardTitle className="font-headline text-lg flex items-center gap-2">
                   <TrendingUp className="w-5 h-5 text-primary" />
                   Advanced Charting

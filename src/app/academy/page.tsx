@@ -38,13 +38,13 @@ export default function AcademyPage() {
   return (
     <AppShell>
       <div className="max-w-6xl mx-auto space-y-8">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 bg-primary/5 p-8 rounded-3xl border border-primary/20 relative overflow-hidden">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 bg-primary/5 p-5 sm:p-8 rounded-3xl border border-primary/20 relative overflow-hidden">
           <div className="z-10 space-y-4">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/20 rounded-full text-xs font-bold text-primary tracking-wider uppercase">
               <Star className="w-3 h-3" /> Learning progress
             </div>
-            <h1 className="text-4xl font-headline font-bold">CryptoLens Academy</h1>
-            <p className="text-muted-foreground text-lg max-w-xl">Short, practical lessons on blockchain, DeFi, security and charting. Progress is saved in this browser.</p>
+            <h1 className="text-3xl sm:text-4xl font-headline font-bold">CryptoLens Academy</h1>
+            <p className="text-muted-foreground text-base sm:text-lg max-w-xl">Short, practical lessons on blockchain, DeFi, security and charting. Progress is saved in this browser.</p>
             <Button size="lg" className="rounded-xl bg-primary shadow-xl shadow-primary/30" onClick={() => setOpen(next ?? LESSONS[0])}>
               {next ? (done.length ? "Continue learning" : "Start learning") : "Review a lesson"}
             </Button>
@@ -68,7 +68,7 @@ export default function AcademyPage() {
         </div>
 
         <h2 className="text-2xl font-headline font-bold">Lessons</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {LESSONS.map((lesson) => {
             const img = PlaceHolderImages.find((p) => p.id === lesson.id);
             const isDone = done.includes(lesson.id);

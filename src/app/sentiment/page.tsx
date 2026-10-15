@@ -34,7 +34,7 @@ export default function SentimentPage() {
             <Gauge className="w-7 h-7 text-accent" />
           </div>
           <div>
-            <h1 className="text-3xl font-headline font-bold">Market Pulse</h1>
+            <h1 className="text-2xl sm:text-3xl font-headline font-bold">Market Pulse</h1>
             <p className="text-muted-foreground">Fear &amp; Greed history, dominance, trending coins and headlines.</p>
           </div>
         </div>

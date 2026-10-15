@@ -64,13 +64,13 @@ export default function AnalyzePage() {
           <div className="inline-flex p-3 rounded-2xl bg-primary/10 border border-primary/20 mb-2">
             <BrainCircuit className="w-10 h-10 text-primary" />
           </div>
-          <h1 className="text-4xl font-headline font-bold">Intelligent Token Research</h1>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
+          <h1 className="text-3xl sm:text-4xl font-headline font-bold">Intelligent Token Research</h1>
+          <p className="text-muted-foreground max-w-2xl mx-auto text-base sm:text-lg">
             Live CoinGecko data plus an AI-written briefing on fundamentals, market context and risks. Educational only, not financial advice.
           </p>
         </div>
 
-        <form onSubmit={handleAnalysis} className="max-w-xl mx-auto flex gap-2">
+        <form onSubmit={handleAnalysis} className="w-full max-w-xl mx-auto flex gap-2">
           <div className="relative flex-1">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
             <Input
@@ -78,7 +78,7 @@ export default function AnalyzePage() {
               onChange={(e) => setQuery(e.target.value)}
               maxLength={40}
               placeholder="Enter token ticker or name (e.g. BTC, Solana...)"
-              className="pl-10 h-12 bg-muted/50 border-border focus:ring-primary rounded-xl font-headline text-lg"
+              className="pl-10 h-12 bg-muted/50 border-border focus:ring-primary rounded-xl font-headline text-base sm:text-lg"
             />
           </div>
           <Button type="submit" size="lg" disabled={loading || !query.trim()} className="rounded-xl bg-primary hover:bg-primary/90 shadow-lg shadow-primary/20 h-12">
@@ -151,7 +151,7 @@ export default function AnalyzePage() {
               </TabsList>
               <TabsContent value="overview">
                 <Card className="border-border"><CardHeader><CardTitle className="font-headline text-xl">Project overview</CardTitle></CardHeader>
-                  <CardContent><p className="text-muted-foreground leading-relaxed text-lg">{a.overview}</p></CardContent></Card>
+                  <CardContent><p className="text-muted-foreground leading-relaxed text-base sm:text-lg">{a.overview}</p></CardContent></Card>
               </TabsContent>
               <TabsContent value="fundamentals">
                 <Card className="border-border"><CardHeader><CardTitle className="font-headline text-xl flex items-center gap-2"><BarChart3 className="w-5 h-5 text-primary" />Utility and technology</CardTitle></CardHeader>

@@ -60,14 +60,14 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         </SidebarFooter>
       </Sidebar>
       <SidebarInset className="flex flex-col min-h-screen bg-background">
-        <header className="h-16 border-b border-border bg-background/80 backdrop-blur-md sticky top-0 z-40 flex items-center px-6 gap-4">
+        <header className="h-16 border-b border-border bg-background/80 backdrop-blur-md sticky top-0 z-40 flex items-center px-4 sm:px-6 gap-4">
           <SidebarTrigger className="md:hidden" />
           <div className="flex items-center gap-2 bg-muted/50 px-3 py-1.5 rounded-full border border-border">
             <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
             <span className="text-xs font-medium text-muted-foreground uppercase tracking-widest">Live market data</span>
           </div>
         </header>
-        <main className="flex-1 p-6 overflow-x-hidden">{children}</main>
+        <main className="flex-1 p-4 sm:p-6 overflow-x-hidden">{children}</main>
       </SidebarInset>
     </SidebarProvider>
   );

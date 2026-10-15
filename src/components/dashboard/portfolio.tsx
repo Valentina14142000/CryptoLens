@@ -56,18 +56,18 @@ export function Portfolio() {
         <span className="text-sm font-bold">{usd(total)}</span>
       </CardHeader>
       <CardContent className="space-y-3">
-        <form onSubmit={add} className="flex gap-2">
+        <form onSubmit={add} className="flex flex-wrap gap-2">
           <select
             value={coinId}
             onChange={(e) => setCoinId(e.target.value)}
-            className="h-10 rounded-md border border-border bg-muted/50 px-2 text-sm"
+            className="h-10 shrink-0 rounded-md border border-border bg-muted/50 px-2 text-sm"
             aria-label="Coin"
           >
             {(coins.length ? coins : [{ id: "bitcoin", symbol: "BTC" }]).map((c) => (
               <option key={c.id} value={c.id}>{c.symbol}</option>
             ))}
           </select>
-          <Input value={amount} onChange={(e) => setAmount(e.target.value)} placeholder="Amount" inputMode="decimal" className="h-10" aria-label="Amount" />
+          <Input value={amount} onChange={(e) => setAmount(e.target.value)} placeholder="Amount" inputMode="decimal" className="h-10 min-w-0 flex-1 basis-24" aria-label="Amount" />
           <Button type="submit" size="sm" className="h-10">Add</Button>
         </form>
         {holdings.length === 0 ? (

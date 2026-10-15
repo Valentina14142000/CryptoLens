@@ -32,11 +32,11 @@ export default function WhaleStreamPage() {
               <Waves className="w-7 h-7 text-primary" />
             </div>
             <div>
-              <h1 className="text-3xl font-headline font-bold">Whale Watch</h1>
+              <h1 className="text-2xl sm:text-3xl font-headline font-bold">Whale Watch</h1>
               <p className="text-muted-foreground">Large unconfirmed Bitcoin transactions, straight from the network.</p>
             </div>
           </div>
-          <div className="flex gap-1 items-center">
+          <div className="flex flex-wrap gap-1 items-center">
             <span className="text-xs text-muted-foreground mr-2">Min size</span>
             {THRESHOLDS.map((t) => (
               <Button key={t} size="sm" variant={t === minBtc ? "default" : "outline"} onClick={() => setMinBtc(t)}>
@@ -78,7 +78,7 @@ export default function WhaleStreamPage() {
                     {data.fees && (
                       <div>
                         <div className="text-muted-foreground mb-2">Recommended fees (sat/vB)</div>
-                        <div className="grid grid-cols-4 gap-2 text-center">
+                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center">
                           {[["Fastest", data.fees.fastest], ["~30 min", data.fees.halfHour], ["~1 hour", data.fees.hour], ["Economy", data.fees.economy]].map(([k, v]) => (
                             <div key={String(k)} className="rounded-xl bg-muted/30 border border-border p-3"><div className="text-lg font-bold">{v}</div><div className="text-[10px] uppercase text-muted-foreground">{k}</div></div>
                           ))}

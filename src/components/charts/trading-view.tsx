@@ -35,7 +35,7 @@ function TradingViewWidget({ symbol = 'BINANCE:BTCUSDT' }: { symbol?: string }) 
     };
   }, [symbol]);
 
-  return <div className="tradingview-widget-container h-[500px] w-full" ref={container} />;
+  return <div className="tradingview-widget-container h-[380px] sm:h-[500px] w-full" ref={container} />;
 }
 
 export default memo(TradingViewWidget);
