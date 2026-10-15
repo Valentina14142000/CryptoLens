@@ -77,3 +77,6 @@
 @media (prefers-reduced-motion: reduce) {
   .animate-marquee { animation: none; }
 }
+
+/* Never allow sideways page scroll on small screens */
+body { overflow-x: clip; }

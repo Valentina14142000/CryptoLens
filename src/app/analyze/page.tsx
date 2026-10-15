@@ -17,9 +17,21 @@ export default function AnalyzePage() {
   const [error, setError] = React.useState("");
   const [result, setResult] = React.useState<AnalyzeResponse | null>(null);
 
-  async function handleAnalysis(e: React.FormEvent) {
+  React.useEffect(() => {
+    const q = new URLSearchParams(window.location.search).get("q")?.trim();
+    if (q) {
+      setQuery(q);
+      void runAnalysis(q);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  function handleAnalysis(e: React.FormEvent) {
     e.preventDefault();
-    const token = query.trim();
+    void runAnalysis(query.trim());
+  }
+
+  async function runAnalysis(token: string) {
     if (!token) return;
     setLoading(true);
     setError("");
